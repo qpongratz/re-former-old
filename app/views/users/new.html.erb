@@ -11,7 +11,7 @@
   <input type='submit'>
 </form>
 -->
-
+<!--
 <%= form_tag('/users', method: :post) %>
 <%= label_tag 'Username' %>
 <%= text_field_tag 'username' %><br><br>
@@ -20,3 +20,14 @@
 <%= label_tag 'Password' %>
 <%= password_field_tag 'password'%><br><br>
 <%= submit_tag 'Submit' %>
+-->
+
+<%= form_with model: @user do |form| %>
+  <%= form.label 'Your username here ->' %>
+  <%= form.text_field :username %><br><br>
+  <%= form.label :email %>
+  <%= form.text_field :email, value:'example@example.com' %><br><br>
+  <%= form.label :password %>
+  <%= form.password_field :password %><br><br>
+  <%= form.submit %>
+<% end %>
