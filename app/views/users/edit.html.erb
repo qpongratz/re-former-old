@@ -1,0 +1,44 @@
+<br><br><br>
+<!--
+<form action='/users' method='post' accept-charset='UTF-8'>
+  <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+  <label for='username'>Username:</label>
+  <input type='text' id='username' name='user[username]'><br><br>
+  <label for='email'>E-mail:</label>
+  <input type='text' id='email' name='user[email]'><br><br>
+  <label for='password'>Password:</label>
+  <input type='password' id='password' name='user[password]'><br><br>
+  <input type='submit'>
+</form>
+-->
+<!--
+<%= form_tag('/users', method: :post) %>
+<%= label_tag 'Username' %>
+<%= text_field_tag 'username' %><br><br>
+<%= label_tag 'E-mail' %>
+<%= text_field_tag 'email' %><br><br>
+<%= label_tag 'Password' %>
+<%= password_field_tag 'password'%><br><br>
+<%= submit_tag 'Submit' %>
+-->
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @user, local: true do |form| %>
+  <%= form.label 'Your username here ->' %>
+  <%= form.text_field :username %><br><br>
+  <%= form.label :email %>
+  <%= form.text_field :email %><br><br>
+  <%= form.label :password %>
+  <%= form.password_field :password %><br><br>
+  <%= form.submit %>
+<% end %>
