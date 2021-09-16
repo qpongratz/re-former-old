@@ -21,24 +21,4 @@
 <%= password_field_tag 'password'%><br><br>
 <%= submit_tag 'Submit' %>
 -->
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_with model: @user, local: true do |form| %>
-  <%= form.label 'Your username here ->' %>
-  <%= form.text_field :username %><br><br>
-  <%= form.label :email %>
-  <%= form.text_field :email %><br><br>
-  <%= form.label :password %>
-  <%= form.password_field :password %><br><br>
-  <%= form.submit %>
-<% end %>
+<%= render 'form', user: @user %>
